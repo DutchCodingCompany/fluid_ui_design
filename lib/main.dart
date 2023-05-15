@@ -3,6 +3,8 @@ import 'package:fluid_ui_design/screen_size_helper.dart';
 import 'package:fluid_ui_design/text_theme.dart';
 import 'package:flutter/material.dart';
 
+import 'fluid_grid_widget.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -11,27 +13,20 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return const MaterialApp(
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     ScreenSizeHelper.instance.setWidth(MediaQuery.of(context).size);
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
       body: Center(
         child: Padding(
           padding: EdgeInsets.all(FluidSizes.m),
@@ -68,45 +63,32 @@ class MyHomePage extends StatelessWidget {
               ),
               Text('Padding: ${FluidSizes.m.toString()}'),
               SizedBox(height: FluidSizes.m),
-              Wrap(
-                spacing: FluidSizes.m,
-                runSpacing: FluidSizes.m,
-                children: [
-                  SizedBox(
-                    width: const FluidSize(min: 100, max: 400).width,
-                    height: 50,
-                    child: Container(color: Colors.red),
+              FluidGridWidget(
+                width: MediaQuery.of(context).size.width,
+                minimalChildWidth: 200,
+                bottomSpacing: FluidSizes.m,
+                itemSpacing: FluidSizes.m,
+                children: List.generate(
+                  6,
+                  (index) => Image.network(
+                    'https://images.ctfassets.net/4pxjo1vaz7xk/MTY3Mjc1MTE0MDYwOTM/f7060314cecad70c362e8ac5c1698552/hero-hand-bloomer2-app-home-texture-bubble-wrap-mobile-nl.jpg',
                   ),
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(minWidth: 100, minHeight: 50, maxWidth: 200),
-                    child: Container(color: Colors.red),
-                  ),
-                  Container(
-                    width: const FluidSize(min: 50, max: 200).width,
-                    height: 50,
-                    color: Colors.blue,
-                    child: const Center(child: Text('Fluid')),
-                  ),
-                ],
+                ),
               ),
-              SizedBox(height: FluidSizes.m),
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      color: Colors.green,
-                      height: 50,
-                    ),
+              FluidGridWidget(
+                width: MediaQuery.of(context).size.width,
+                minimalChildWidth: 200,
+                bottomSpacing: FluidSizes.m,
+                itemSpacing: FluidSizes.m,
+                maxChildrenPerRow: 3,
+                keepItemsSameSize: true,
+                children: List.generate(
+                  5,
+                  (index) => Image.network(
+                    'https://www.internetmatters.org/wp-content/uploads/2018/03/Google-family-link-600x356.png',
                   ),
-                  SizedBox(width: FluidSizes.l),
-                  Expanded(
-                    child: Container(
-                      color: Colors.green,
-                      height: 50,
-                    ),
-                  )
-                ],
-              )
+                ),
+              ),
             ],
           ),
         ),
