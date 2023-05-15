@@ -1,9 +1,9 @@
+import 'package:fluid_ui_design/fluid_button.dart';
+import 'package:fluid_ui_design/fluid_grid.dart';
 import 'package:fluid_ui_design/fluid_size.dart';
 import 'package:fluid_ui_design/screen_size_helper.dart';
 import 'package:fluid_ui_design/text_theme.dart';
 import 'package:flutter/material.dart';
-
-import 'fluid_grid_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -62,8 +62,9 @@ class MyHomePage extends StatelessWidget {
                 style: FluidUITheme.textTheme.bodySmall,
               ),
               Text('Padding: ${FluidSizes.m.toString()}'),
+              FluidButton(onPressed: () {}),
               SizedBox(height: FluidSizes.m),
-              FluidGridWidget(
+              FluidGrid(
                 width: MediaQuery.of(context).size.width,
                 minimalChildWidth: 200,
                 bottomSpacing: FluidSizes.m,
@@ -75,7 +76,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              FluidGridWidget(
+              FluidGrid(
                 width: MediaQuery.of(context).size.width,
                 minimalChildWidth: 200,
                 bottomSpacing: FluidSizes.m,

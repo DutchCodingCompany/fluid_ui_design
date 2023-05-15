@@ -3,8 +3,8 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:quiver/iterables.dart';
 
-class FluidGridWidget extends StatelessWidget {
-  const FluidGridWidget({
+class FluidGrid extends StatelessWidget {
+  const FluidGrid({
     super.key,
     required this.children,
     required this.width,
