@@ -72,8 +72,9 @@ class MyHomePage extends StatelessWidget {
                 spacing: FluidSizes.m,
                 runSpacing: FluidSizes.m,
                 children: [
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(minWidth: 100, minHeight: 50, maxWidth: 400),
+                  SizedBox(
+                    width: const FluidSize(min: 100, max: 400).width,
+                    height: 50,
                     child: Container(color: Colors.red),
                   ),
                   ConstrainedBox(
