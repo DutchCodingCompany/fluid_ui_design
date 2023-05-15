@@ -35,8 +35,7 @@ class MyHomePage extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: EdgeInsets.all(FluidSizes.m),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
             children: <Widget>[
               Text(
                 'This is a FluidUI headline large of size: ${FluidUITheme.textTheme.headlineLarge?.fontSize?.toStringAsFixed(1)}',
@@ -68,6 +67,7 @@ class MyHomePage extends StatelessWidget {
                 style: FluidUITheme.textTheme.bodySmall,
               ),
               Text('Padding: ${FluidSizes.m.toString()}'),
+              SizedBox(height: FluidSizes.m),
               Wrap(
                 spacing: FluidSizes.m,
                 runSpacing: FluidSizes.m,
@@ -88,6 +88,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: FluidSizes.m),
               Row(
                 children: [
                   Expanded(

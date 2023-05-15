@@ -6,15 +6,15 @@ part 'fluid_size.freezed.dart';
 @freezed
 class FluidSize with _$FluidSize {
   const FluidSize._();
-  static const double minViewportWidth = 320; //Minimal threshold -> Small phone width
-  static const double maxViewportWidth = 1500; //Maximal threshold -> Desktop width
+  static const double minViewportWidth = 320;   //Minimal threshold -> Small phone width
+  static const double maxViewportWidth = 1500;  //Maximal threshold -> Desktop width
 
   const factory FluidSize({
     required double min,
     required double max,
   }) = _FluidSize;
 
-  // Calculates the size of a given FluidSize between min and max for the current device's screenwidth
+  /// Calculates the size of a given [FluidSize] between its [min] and [max] for the current device's screenwidth
   double get width {
     double slope = (max - min) / (maxViewportWidth - minViewportWidth);
     double yIntersect = min - (slope * minViewportWidth);
