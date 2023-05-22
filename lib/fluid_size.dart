@@ -1,3 +1,4 @@
+import 'package:fluid_ui_design/core/fluid_config_state.dart';
 import 'package:fluid_ui_design/screen_size_helper.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -6,8 +7,10 @@ part 'fluid_size.freezed.dart';
 @freezed
 class FluidSize with _$FluidSize {
   const FluidSize._();
-  static const double minViewportWidth = 320;   //Minimal threshold -> Small phone width
-  static const double maxViewportWidth = 1500;  //Maximal threshold -> Desktop width
+  double get minViewportWidth =>
+      FluidConfigState.instance.viewportConfig.minViewportSize; //Minimal threshold -> Small phone width
+  double get maxViewportWidth =>
+      FluidConfigState.instance.viewportConfig.maxViewportSize; //Maximal threshold -> Desktop width
 
   const factory FluidSize({
     required double min,

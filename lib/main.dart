@@ -1,8 +1,8 @@
-import 'package:fluid_ui_design/fluid_button.dart';
-import 'package:fluid_ui_design/fluid_grid.dart';
+import 'package:fluid_ui_design/core/fluid_wrapper.dart';
 import 'package:fluid_ui_design/fluid_size.dart';
-import 'package:fluid_ui_design/screen_size_helper.dart';
 import 'package:fluid_ui_design/text_theme.dart';
+import 'package:fluid_ui_design/widgets/fluid_button.dart';
+import 'package:fluid_ui_design/widgets/fluid_grid.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,8 +13,10 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MyHomePage(),
+    return const FluidWrapper(
+      child: MaterialApp(
+        home: MyHomePage(),
+      ),
     );
   }
 }
@@ -24,8 +26,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenSizeHelper.instance.setWidth(MediaQuery.of(context).size);
-
     return Scaffold(
       body: Center(
         child: Padding(

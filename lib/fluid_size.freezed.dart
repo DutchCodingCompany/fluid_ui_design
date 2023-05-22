@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'fluid_size.dart';
+part of '../fluid_size.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -20,21 +20,18 @@ mixin _$FluidSize {
   double get max => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FluidSizeCopyWith<FluidSize> get copyWith =>
-      throw _privateConstructorUsedError;
+  $FluidSizeCopyWith<FluidSize> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FluidSizeCopyWith<$Res> {
-  factory $FluidSizeCopyWith(FluidSize value, $Res Function(FluidSize) then) =
-      _$FluidSizeCopyWithImpl<$Res, FluidSize>;
+  factory $FluidSizeCopyWith(FluidSize value, $Res Function(FluidSize) then) = _$FluidSizeCopyWithImpl<$Res, FluidSize>;
   @useResult
   $Res call({double min, double max});
 }
 
 /// @nodoc
-class _$FluidSizeCopyWithImpl<$Res, $Val extends FluidSize>
-    implements $FluidSizeCopyWith<$Res> {
+class _$FluidSizeCopyWithImpl<$Res, $Val extends FluidSize> implements $FluidSizeCopyWith<$Res> {
   _$FluidSizeCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -63,8 +60,7 @@ class _$FluidSizeCopyWithImpl<$Res, $Val extends FluidSize>
 
 /// @nodoc
 abstract class _$$_FluidSizeCopyWith<$Res> implements $FluidSizeCopyWith<$Res> {
-  factory _$$_FluidSizeCopyWith(
-          _$_FluidSize value, $Res Function(_$_FluidSize) then) =
+  factory _$$_FluidSizeCopyWith(_$_FluidSize value, $Res Function(_$_FluidSize) then) =
       __$$_FluidSizeCopyWithImpl<$Res>;
   @override
   @useResult
@@ -72,12 +68,9 @@ abstract class _$$_FluidSizeCopyWith<$Res> implements $FluidSizeCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_FluidSizeCopyWithImpl<$Res>
-    extends _$FluidSizeCopyWithImpl<$Res, _$_FluidSize>
+class __$$_FluidSizeCopyWithImpl<$Res> extends _$FluidSizeCopyWithImpl<$Res, _$_FluidSize>
     implements _$$_FluidSizeCopyWith<$Res> {
-  __$$_FluidSizeCopyWithImpl(
-      _$_FluidSize _value, $Res Function(_$_FluidSize) _then)
-      : super(_value, _then);
+  __$$_FluidSizeCopyWithImpl(_$_FluidSize _value, $Res Function(_$_FluidSize) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -128,13 +121,11 @@ class _$_FluidSize extends _FluidSize {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FluidSizeCopyWith<_$_FluidSize> get copyWith =>
-      __$$_FluidSizeCopyWithImpl<_$_FluidSize>(this, _$identity);
+  _$$_FluidSizeCopyWith<_$_FluidSize> get copyWith => __$$_FluidSizeCopyWithImpl<_$_FluidSize>(this, _$identity);
 }
 
 abstract class _FluidSize extends FluidSize {
-  const factory _FluidSize(
-      {required final double min, required final double max}) = _$_FluidSize;
+  const factory _FluidSize({required final double min, required final double max}) = _$_FluidSize;
   const _FluidSize._() : super._();
 
   @override
@@ -143,6 +134,5 @@ abstract class _FluidSize extends FluidSize {
   double get max;
   @override
   @JsonKey(ignore: true)
-  _$$_FluidSizeCopyWith<_$_FluidSize> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_FluidSizeCopyWith<_$_FluidSize> get copyWith => throw _privateConstructorUsedError;
 }
