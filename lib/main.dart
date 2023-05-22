@@ -1,5 +1,5 @@
 import 'package:fluid_ui_design/core/fluid_wrapper.dart';
-import 'package:fluid_ui_design/fluid_size.dart';
+import 'package:fluid_ui_design/space/fluid_space.dart';
 import 'package:fluid_ui_design/text_theme.dart';
 import 'package:fluid_ui_design/widgets/fluid_button.dart';
 import 'package:fluid_ui_design/widgets/fluid_grid.dart';
@@ -29,7 +29,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(FluidSizes.m),
+          padding: EdgeInsets.all(FluidSpaces.m),
           child: ListView(
             children: <Widget>[
               Text(
@@ -56,19 +56,19 @@ class MyHomePage extends StatelessWidget {
                 'This is a FluidUI body small of size: ${FluidUITheme.textTheme.bodySmall?.fontSize?.toStringAsFixed(1)}',
                 style: FluidUITheme.textTheme.bodySmall,
               ),
-              SizedBox(height: FluidSizes.m),
+              SizedBox(height: FluidSpaces.m),
               Text(
                 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.',
                 style: FluidUITheme.textTheme.bodySmall,
               ),
-              Text('Padding: ${FluidSizes.m.toString()}'),
+              Text('Padding: ${FluidSpaces.m.toString()}'),
               FluidButton(onPressed: () {}),
-              SizedBox(height: FluidSizes.m),
+              SizedBox(height: FluidSpaces.m),
               FluidGrid(
                 width: MediaQuery.of(context).size.width,
                 minimalChildWidth: 200,
-                bottomSpacing: FluidSizes.m,
-                itemSpacing: FluidSizes.m,
+                bottomSpacing: FluidSpaces.m,
+                itemSpacing: FluidSpaces.m,
                 children: List.generate(
                   6,
                   (index) => Image.network(
@@ -79,8 +79,8 @@ class MyHomePage extends StatelessWidget {
               FluidGrid(
                 width: MediaQuery.of(context).size.width,
                 minimalChildWidth: 200,
-                bottomSpacing: FluidSizes.m,
-                itemSpacing: FluidSizes.m,
+                bottomSpacing: FluidSpaces.m,
+                itemSpacing: FluidSpaces.m,
                 maxChildrenPerRow: 3,
                 keepItemsSameSize: true,
                 children: List.generate(

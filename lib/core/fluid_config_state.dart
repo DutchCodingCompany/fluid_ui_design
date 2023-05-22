@@ -4,7 +4,6 @@ import 'package:fluid_ui_design/type/type_config.dart';
 
 class FluidConfigState {
   FluidConfigState._();
-  //Default value, this is overwritten by the setWidth.
   late SpaceConfig spaceConfig;
   late TypeConfig typeConfig;
   late ViewportConfig viewportConfig;
