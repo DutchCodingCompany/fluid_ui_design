@@ -16,8 +16,15 @@ class FluidWrapper extends StatelessWidget {
   });
 
   final Widget child;
+
+  /// The space configuration for the Fluid UI Design system.
   final SpaceConfig spaceConfig;
+
+  /// The type configuration for the Fluid UI Design system.
   final TypeConfig typeConfig;
+
+  /// The viewport configuration for the Fluid UI Design system.
+  /// This is used to determine the min and max viewport sizes.
   final ViewportConfig viewportConfig;
 
   @override

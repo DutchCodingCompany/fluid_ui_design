@@ -38,19 +38,19 @@ void main() {
         double veryLargeScreenSize = 2000;
 
         ScreenSizeHelper.instance.setWidth(Size(verySmallScreenSize, verySmallScreenSize));
-        expect(FluidSpace(spaceModifier: spaceModifier).space.round(), minimalSize);
+        expect(FluidSpace(spaceModifier: spaceModifier).value.round(), minimalSize);
 
         ScreenSizeHelper.instance.setWidth(Size(minimalScreenSize, minimalScreenSize));
-        expect(FluidSpace(spaceModifier: spaceModifier).space.round(), minimalSize);
+        expect(FluidSpace(spaceModifier: spaceModifier).value.round(), minimalSize);
 
         ScreenSizeHelper.instance.setWidth(Size(halfScreenSize, halfScreenSize));
-        expect(FluidSpace(spaceModifier: spaceModifier).space.round(), halfSize);
+        expect(FluidSpace(spaceModifier: spaceModifier).value.round(), halfSize);
 
         ScreenSizeHelper.instance.setWidth(Size(maximalScreenSize, maximalScreenSize));
-        expect(FluidSpace(spaceModifier: spaceModifier).space.round(), maximalSize);
+        expect(FluidSpace(spaceModifier: spaceModifier).value.round(), maximalSize);
 
         ScreenSizeHelper.instance.setWidth(Size(veryLargeScreenSize, veryLargeScreenSize));
-        expect(FluidSpace(spaceModifier: spaceModifier).space.round(), maximalSize);
+        expect(FluidSpace(spaceModifier: spaceModifier).value.round(), maximalSize);
       }),
     );
   });

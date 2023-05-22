@@ -12,7 +12,7 @@ class FluidButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: const FluidSize(min: 100, max: 300).width,
+      width: const FluidSize(min: 100, max: 300).value,
       height: FluidSpaces.l,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(

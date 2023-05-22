@@ -22,7 +22,7 @@ class FluidType {
     }
   }
 
-  double get space {
-    return FluidSize(min: min, max: max).width;
+  double get value {
+    return FluidSize(min: min, max: max).value;
   }
 }

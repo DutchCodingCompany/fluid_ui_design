@@ -13,7 +13,7 @@ class FluidSize {
   final double max;
 
   /// Calculates the size of a given [FluidSize] between its [min] and [max] for the current device's screenwidth
-  double get width {
+  double get value {
     if (screenWidth >= maxViewportWidth) return max;
     if (screenWidth <= minViewportWidth) return min;
 

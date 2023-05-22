@@ -44,7 +44,7 @@ void main() {
             FluidSpacePair(
                     start: FluidSpace(spaceModifier: spaceModifierStart),
                     end: FluidSpace(spaceModifier: spaceModifierEnd))
-                .space
+                .value
                 .round(),
             minimalSize);
 
@@ -53,7 +53,7 @@ void main() {
             FluidSpacePair(
                     start: FluidSpace(spaceModifier: spaceModifierStart),
                     end: FluidSpace(spaceModifier: spaceModifierEnd))
-                .space
+                .value
                 .round(),
             minimalSize);
 
@@ -62,7 +62,7 @@ void main() {
             FluidSpacePair(
                     start: FluidSpace(spaceModifier: spaceModifierStart),
                     end: FluidSpace(spaceModifier: spaceModifierEnd))
-                .space
+                .value
                 .round(),
             halfSize);
 
@@ -71,7 +71,7 @@ void main() {
             FluidSpacePair(
                     start: FluidSpace(spaceModifier: spaceModifierStart),
                     end: FluidSpace(spaceModifier: spaceModifierEnd))
-                .space
+                .value
                 .round(),
             maximalSize);
 
@@ -80,7 +80,7 @@ void main() {
             FluidSpacePair(
                     start: FluidSpace(spaceModifier: spaceModifierStart),
                     end: FluidSpace(spaceModifier: spaceModifierEnd))
-                .space
+                .value
                 .round(),
             maximalSize);
       }),

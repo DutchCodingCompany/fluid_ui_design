@@ -7,5 +7,5 @@ class FluidSpacePair {
 
   const FluidSpacePair({required this.start, required this.end});
 
-  double get space => FluidSize(min: start.min, max: end.max).width;
+  double get value => FluidSize(min: start.min, max: end.max).value;
 }

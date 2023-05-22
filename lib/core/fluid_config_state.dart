@@ -9,6 +9,7 @@ class FluidConfigState {
   late ViewportConfig viewportConfig;
   bool initialized = false;
 
+  /// Sets the configuration for the Fluid UI Design system.
   void setConfig(SpaceConfig spaceConfig, TypeConfig typeConfig, ViewportConfig viewportConfig) {
     this.spaceConfig = spaceConfig;
     this.typeConfig = typeConfig;

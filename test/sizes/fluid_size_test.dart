@@ -27,7 +27,7 @@ void main() {
       p2((double screenSize, double expectedSize) {
         ScreenSizeHelper.instance.setWidth(Size(screenSize, screenSize));
 
-        expect(size.width, expectedSize);
+        expect(size.value, expectedSize);
       }),
     );
 
@@ -45,7 +45,7 @@ void main() {
       p2((double screenSize, double expectedSize) {
         ScreenSizeHelper.instance.setWidth(Size(screenSize, screenSize));
 
-        expect(shrinkingSize.width, expectedSize);
+        expect(shrinkingSize.value, expectedSize);
       }),
     );
   });
@@ -68,7 +68,7 @@ void main() {
       p2((double screenSize, double expectedSize) {
         ScreenSizeHelper.instance.setWidth(Size(screenSize, screenSize));
 
-        expect(size.width, expectedSize);
+        expect(size.value, expectedSize);
       }),
     );
   });

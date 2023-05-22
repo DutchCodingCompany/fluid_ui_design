@@ -50,19 +50,19 @@ void main() {
         double veryLargeScreenSize = 2000;
 
         ScreenSizeHelper.instance.setWidth(Size(verySmallScreenSize, verySmallScreenSize));
-        expect(double.parse(FluidType(scaleStep).space.toStringAsFixed(2)), minimalSize);
+        expect(double.parse(FluidType(scaleStep).value.toStringAsFixed(2)), minimalSize);
 
         ScreenSizeHelper.instance.setWidth(Size(minimalScreenSize, minimalScreenSize));
-        expect(double.parse(FluidType(scaleStep).space.toStringAsFixed(2)), minimalSize);
+        expect(double.parse(FluidType(scaleStep).value.toStringAsFixed(2)), minimalSize);
 
         ScreenSizeHelper.instance.setWidth(Size(halfScreenSize, halfScreenSize));
-        expect(double.parse(FluidType(scaleStep).space.toStringAsFixed(2)), halfSize);
+        expect(double.parse(FluidType(scaleStep).value.toStringAsFixed(2)), halfSize);
 
         ScreenSizeHelper.instance.setWidth(Size(maximalScreenSize, maximalScreenSize));
-        expect(double.parse(FluidType(scaleStep).space.toStringAsFixed(2)), maximalSize);
+        expect(double.parse(FluidType(scaleStep).value.toStringAsFixed(2)), maximalSize);
 
         ScreenSizeHelper.instance.setWidth(Size(veryLargeScreenSize, veryLargeScreenSize));
-        expect(double.parse(FluidType(scaleStep).space.toStringAsFixed(2)), maximalSize);
+        expect(double.parse(FluidType(scaleStep).value.toStringAsFixed(2)), maximalSize);
       }),
     );
   });
