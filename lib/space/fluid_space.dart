@@ -1,5 +1,4 @@
-import 'package:fluid_ui_design/core/fluid_config_state.dart';
-
+import '../core/fluid_config_state.dart';
 import '../fluid_size.dart';
 
 class FluidSpace {

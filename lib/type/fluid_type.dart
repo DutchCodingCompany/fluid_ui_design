@@ -1,8 +1,7 @@
 import 'dart:math';
 
-import 'package:fluid_ui_design/fluid_size.dart';
-
 import '../core/fluid_config_state.dart';
+import '../fluid_size.dart';
 
 class FluidType {
   final int scaleStep;

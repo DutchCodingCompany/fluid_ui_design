@@ -1,6 +1,6 @@
-import 'package:fluid_ui_design/core/viewport_config.dart';
-import 'package:fluid_ui_design/space/space_config.dart';
-import 'package:fluid_ui_design/type/type_config.dart';
+import '../space/space_config.dart';
+import '../type/type_config.dart';
+import 'viewport_config.dart';
 
 class FluidConfigState {
   FluidConfigState._();

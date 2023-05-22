@@ -1,10 +1,10 @@
-import 'package:fluid_ui_design/core/viewport_config.dart';
-import 'package:fluid_ui_design/space/space_config.dart';
-import 'package:fluid_ui_design/type/type_config.dart';
 import 'package:flutter/material.dart';
 
 import '../screen_size_helper.dart';
+import '../space/space_config.dart';
+import '../type/type_config.dart';
 import 'fluid_config_state.dart';
+import 'viewport_config.dart';
 
 class FluidWrapper extends StatelessWidget {
   const FluidWrapper({

@@ -1,5 +1,5 @@
-import 'package:fluid_ui_design/core/fluid_config_state.dart';
-import 'package:fluid_ui_design/screen_size_helper.dart';
+import 'core/fluid_config_state.dart';
+import 'screen_size_helper.dart';
 
 class FluidSize {
   const FluidSize({required this.min, required this.max});

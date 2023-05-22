@@ -1,9 +1,10 @@
-import 'package:fluid_ui_design/core/fluid_wrapper.dart';
-import 'package:fluid_ui_design/space/fluid_space.dart';
-import 'package:fluid_ui_design/text_theme.dart';
-import 'package:fluid_ui_design/widgets/fluid_button.dart';
-import 'package:fluid_ui_design/widgets/fluid_grid.dart';
 import 'package:flutter/material.dart';
+
+import 'core/fluid_wrapper.dart';
+import 'space/fluid_space.dart';
+import 'text_theme.dart';
+import 'widgets/fluid_button.dart';
+import 'widgets/fluid_grid.dart';
 
 void main() {
   runApp(const MyApp());

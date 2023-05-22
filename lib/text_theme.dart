@@ -1,5 +1,6 @@
-import 'package:fluid_ui_design/type/fluid_type.dart';
 import 'package:flutter/material.dart';
+
+import 'type/fluid_type.dart';
 
 abstract class FluidUITheme {
   static TextTheme get textTheme => TextTheme(

@@ -1,8 +1,8 @@
-import 'package:fluid_ui_design/fluid_size.dart';
-import 'package:fluid_ui_design/text_theme.dart';
 import 'package:flutter/material.dart';
 
+import '../fluid_size.dart';
 import '../space/fluid_space.dart';
+import '../text_theme.dart';
 
 class FluidButton extends StatelessWidget {
   const FluidButton({required this.onPressed, super.key});
