@@ -1,0 +1,19 @@
+name: fluid_ui_design_example
+description: A exampole for Fluid UI Design
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.3 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  quiver: ^3.2.1
+  fluid_ui_design: 
+    path: ../
+
+flutter:
+  uses-material-design: true
+  

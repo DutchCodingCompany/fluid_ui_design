@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screen_size_helper.dart';
+import 'screen_size_helper.dart';
 import '../space/space_config.dart';
 import '../type/type_config.dart';
 import 'fluid_config_state.dart';

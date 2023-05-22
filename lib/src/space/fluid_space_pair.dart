@@ -1,4 +1,4 @@
-import '../fluid_size.dart';
+import '../core/fluid_size.dart';
 import 'fluid_space.dart';
 
 class FluidSpacePair {

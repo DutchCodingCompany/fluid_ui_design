@@ -1,10 +1,10 @@
+import 'package:fluid_ui_design/src/widgets/fluid_grid.dart';
 import 'package:flutter/material.dart';
 
 import 'core/fluid_wrapper.dart';
 import 'space/fluid_space.dart';
 import 'text_theme.dart';
 import 'widgets/fluid_button.dart';
-import 'widgets/fluid_grid.dart';
 
 void main() {
   runApp(const MyApp());

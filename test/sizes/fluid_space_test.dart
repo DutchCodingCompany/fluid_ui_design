@@ -1,11 +1,11 @@
 import 'dart:ui';
 
-import 'package:fluid_ui_design/core/fluid_config_state.dart';
-import 'package:fluid_ui_design/core/viewport_config.dart';
-import 'package:fluid_ui_design/screen_size_helper.dart';
-import 'package:fluid_ui_design/space/fluid_space.dart';
-import 'package:fluid_ui_design/space/space_config.dart';
-import 'package:fluid_ui_design/type/type_config.dart';
+import 'package:fluid_ui_design/src/core/fluid_config_state.dart';
+import 'package:fluid_ui_design/src/core/screen_size_helper.dart';
+import 'package:fluid_ui_design/src/core/viewport_config.dart';
+import 'package:fluid_ui_design/src/space/fluid_space.dart';
+import 'package:fluid_ui_design/src/space/space_config.dart';
+import 'package:fluid_ui_design/src/type/type_config.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:parameterized_test/parameterized_test.dart';
 

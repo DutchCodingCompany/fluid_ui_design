@@ -1,5 +1,5 @@
 import '../core/fluid_config_state.dart';
-import '../fluid_size.dart';
+import '../core/fluid_size.dart';
 
 class FluidSpace {
   final double spaceModifier;

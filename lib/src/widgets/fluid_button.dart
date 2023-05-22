@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../fluid_size.dart';
+import '../core/fluid_size.dart';
 import '../space/fluid_space.dart';
-import '../text_theme.dart';
 
 class FluidButton extends StatelessWidget {
   const FluidButton({required this.onPressed, super.key});
@@ -21,8 +20,8 @@ class FluidButton extends StatelessWidget {
         ),
         onPressed: onPressed,
         child: Text(
-          'Fluid button with height: ${FluidUITheme.textTheme.bodyMedium?.fontSize?.toStringAsFixed(1)}',
-          style: FluidUITheme.textTheme.bodySmall?.copyWith(color: Colors.white),
+          'Fluid button with height: ${Theme.of(context).textTheme.bodyMedium?.fontSize?.toStringAsFixed(1)}',
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white),
         ),
       ),
     );

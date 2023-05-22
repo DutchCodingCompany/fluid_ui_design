@@ -1,4 +1,4 @@
-import 'core/fluid_config_state.dart';
+import 'fluid_config_state.dart';
 import 'screen_size_helper.dart';
 
 class FluidSize {
