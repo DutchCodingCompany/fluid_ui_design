@@ -1,6 +1,8 @@
-import 'package:fluid_ui_design/fluid_size.dart';
-import 'package:fluid_ui_design/text_theme.dart';
 import 'package:flutter/material.dart';
+
+import '../fluid_size.dart';
+import '../space/fluid_space.dart';
+import '../text_theme.dart';
 
 class FluidButton extends StatelessWidget {
   const FluidButton({required this.onPressed, super.key});
@@ -10,12 +12,12 @@ class FluidButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: const FluidSize(min: 100, max: 300).width,
-      height: FluidSizes.l,
+      width: const FluidSize(min: 100, max: 300).value,
+      height: FluidSpaces.l,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.purple,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(FluidSizes.l)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(FluidSpaces.l)),
         ),
         onPressed: onPressed,
         child: Text(
