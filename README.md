@@ -69,11 +69,11 @@ When on the smallest screensize/breakpoint it will return 100. When on the maxim
 FluidSpace is a layer over Fluid Size based on modifier scale set in the settings. A designer can create a Fluid Space scale in design; and by using these modifiers you get a logical scale of sizings usable in your layout. The class FluidSpaces is used as a preset of scales. This can be used for example:
 
 ```dart
-SizedBox(height: FluidSpaåes.m)
+SizedBox(height: FluidSpaces.m)
 ```
 
 ### FluidSpacePair
-Sometiems you want to have a FluidSpace grow more or less based on screensize. On a large device, you want to have a lot more space on the top of your screen. This can be done with a FluidSpacePair. This class takes two FluidSpaces and will return the first one on small screens and the second one on large screens. When the screen size is in between, it will return a value in between.
+Sometimes you want to have a FluidSpace grow more or less based on screensize. On a large device, you want to have a lot more space on the top of your screen. This can be done with a FluidSpacePair. This class takes two FluidSpaces and will return the first one on small screens and the second one on large screens. When the screen size is in between, it will return a value in between.
 
 ### FluidType
 FluidType is used to create a logical typescale. For typography, you want to have more difference in your fontsizes based on screensize. Using FluidType also scales the scale modifier based on screen size within the viewports. This means that the difference in font size will be bigger on a large screen than on a small screen. This is based on the Utopia principle.
