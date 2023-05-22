@@ -30,6 +30,24 @@ void main() {
         expect(size.width, expectedSize);
       }),
     );
+
+    const FluidSize shrinkingSize = FluidSize(min: 200, max: 100);
+
+    parameterizedTest(
+      'Also works when max is smaller then min',
+      [
+        [320.0, 200.0],
+        [1500.0, 100.0],
+        [910.0, 150.0],
+        [0.0, 200.0],
+        [2000.0, 100.0]
+      ],
+      p2((double screenSize, double expectedSize) {
+        ScreenSizeHelper.instance.setWidth(Size(screenSize, screenSize));
+
+        expect(shrinkingSize.width, expectedSize);
+      }),
+    );
   });
 
   group('with custom viewport settings', () {

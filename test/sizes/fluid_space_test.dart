@@ -18,17 +18,39 @@ void main() {
     parameterizedTest(
       'Should nicely distribute between min and max',
       [
-        //todo: add test sets for other default modifiers
-        [spaceConfig.xxxsModifier, 320.0, 5.25],
-        [spaceConfig.xxxsModifier, 1500.0, 6.0],
-        [spaceConfig.xxxsModifier, 910.0, 5.625],
-        [spaceConfig.xxxsModifier, 0.0, 5.25],
-        [spaceConfig.xxxsModifier, 2000.0, 6.0]
+        //data generated on https://utopia.fyi/space/calculator?c=320,17,1.2,1500,20,1.333,10,10,910&s=0.75%7C0.5%7C0.25,1.5%7C2%7C3%7C4%7C6,s-l&g=s,l,xl,12
+        [spaceConfig.xxxsModifier, 4, 5, 5],
+        [spaceConfig.xxsModifier, 9, 10, 9],
+        [spaceConfig.xsModifier, 13, 15, 14],
+        [spaceConfig.sModifier, 17, 20, 19],
+        [spaceConfig.mModifier, 26, 30, 28],
+        [spaceConfig.lModifier, 34, 40, 37],
+        [spaceConfig.xlModifier, 51, 60, 56],
+        [spaceConfig.xxlModifier, 68, 80, 74],
+        [spaceConfig.xxxlModifier, 102, 120, 111],
       ],
-      p3((double spaceModifier, double screenSize, double expectedSize) {
-        ScreenSizeHelper.instance.setWidth(Size(screenSize, screenSize));
+      p4((double spaceModifier, int minimalSize, int maximalSize, int halfSize) {
+        double minimalScreenSize = const ViewportConfig().minViewportSize;
+        double maximalScreenSize = const ViewportConfig().maxViewportSize;
+        double halfScreenSize = (maximalScreenSize + minimalScreenSize) / 2;
 
-        expect(FluidSpace(spaceModifier: spaceModifier).space, expectedSize);
+        double verySmallScreenSize = 20;
+        double veryLargeScreenSize = 2000;
+
+        ScreenSizeHelper.instance.setWidth(Size(verySmallScreenSize, verySmallScreenSize));
+        expect(FluidSpace(spaceModifier: spaceModifier).space.round(), minimalSize);
+
+        ScreenSizeHelper.instance.setWidth(Size(minimalScreenSize, minimalScreenSize));
+        expect(FluidSpace(spaceModifier: spaceModifier).space.round(), minimalSize);
+
+        ScreenSizeHelper.instance.setWidth(Size(halfScreenSize, halfScreenSize));
+        expect(FluidSpace(spaceModifier: spaceModifier).space.round(), halfSize);
+
+        ScreenSizeHelper.instance.setWidth(Size(maximalScreenSize, maximalScreenSize));
+        expect(FluidSpace(spaceModifier: spaceModifier).space.round(), maximalSize);
+
+        ScreenSizeHelper.instance.setWidth(Size(veryLargeScreenSize, veryLargeScreenSize));
+        expect(FluidSpace(spaceModifier: spaceModifier).space.round(), maximalSize);
       }),
     );
   });

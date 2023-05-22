@@ -2,8 +2,8 @@ import 'dart:core';
 
 class SpaceConfig {
   const SpaceConfig({
-    this.baseMin = 21,
-    this.baseMax = 24,
+    this.baseMin = 17,
+    this.baseMax = 20,
     this.xxxsModifier = 0.25,
     this.xxsModifier = 0.5,
     this.xsModifier = 0.75,
