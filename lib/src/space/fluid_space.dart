@@ -1,25 +1,30 @@
-import '../core/fluid_config_state.dart';
 import '../core/fluid_size.dart';
+import '../core/theme/fluid_config_theme_extension.dart';
 
 class FluidSpace {
   final double spaceModifier;
+  final FluidConfig fluidConfig;
 
-  const FluidSpace({required this.spaceModifier});
+  const FluidSpace({required this.fluidConfig, required this.spaceModifier});
 
-  double get min => FluidConfigState.instance.spaceConfig.baseMin * spaceModifier;
-  double get max => FluidConfigState.instance.spaceConfig.baseMax * spaceModifier;
+  double get min => fluidConfig.spaceConfig.baseMin * spaceModifier;
+  double get max => fluidConfig.spaceConfig.baseMax * spaceModifier;
 
-  double get value => FluidSize(min: min, max: max).value;
+  double get value => FluidSize(fluidConfig: fluidConfig, min: min, max: max).value;
 }
 
 class FluidSpaces {
-  static double get xxxs => FluidSpace(spaceModifier: FluidConfigState.instance.spaceConfig.xxxsModifier).value;
-  static double get xxs => FluidSpace(spaceModifier: FluidConfigState.instance.spaceConfig.xxsModifier).value;
-  static double get xs => FluidSpace(spaceModifier: FluidConfigState.instance.spaceConfig.xsModifier).value;
-  static double get s => FluidSpace(spaceModifier: FluidConfigState.instance.spaceConfig.sModifier).value;
-  static double get m => FluidSpace(spaceModifier: FluidConfigState.instance.spaceConfig.mModifier).value;
-  static double get l => FluidSpace(spaceModifier: FluidConfigState.instance.spaceConfig.lModifier).value;
-  static double get xl => FluidSpace(spaceModifier: FluidConfigState.instance.spaceConfig.xlModifier).value;
-  static double get xxl => FluidSpace(spaceModifier: FluidConfigState.instance.spaceConfig.xxlModifier).value;
-  static double get xxxl => FluidSpace(spaceModifier: FluidConfigState.instance.spaceConfig.xxxlModifier).value;
+  final FluidConfig fluidConfig;
+
+  const FluidSpaces(this.fluidConfig);
+
+  double get xxxs => FluidSpace(fluidConfig: fluidConfig, spaceModifier: fluidConfig.spaceConfig.xxxsModifier).value;
+  double get xxs => FluidSpace(fluidConfig: fluidConfig, spaceModifier: fluidConfig.spaceConfig.xxsModifier).value;
+  double get xs => FluidSpace(fluidConfig: fluidConfig, spaceModifier: fluidConfig.spaceConfig.xsModifier).value;
+  double get s => FluidSpace(fluidConfig: fluidConfig, spaceModifier: fluidConfig.spaceConfig.sModifier).value;
+  double get m => FluidSpace(fluidConfig: fluidConfig, spaceModifier: fluidConfig.spaceConfig.mModifier).value;
+  double get l => FluidSpace(fluidConfig: fluidConfig, spaceModifier: fluidConfig.spaceConfig.lModifier).value;
+  double get xl => FluidSpace(fluidConfig: fluidConfig, spaceModifier: fluidConfig.spaceConfig.xlModifier).value;
+  double get xxl => FluidSpace(fluidConfig: fluidConfig, spaceModifier: fluidConfig.spaceConfig.xxlModifier).value;
+  double get xxxl => FluidSpace(fluidConfig: fluidConfig, spaceModifier: fluidConfig.spaceConfig.xxxlModifier).value;
 }

@@ -1,19 +1,10 @@
-import 'dart:ui';
-
-import 'package:fluid_ui_design/src/core/fluid_config_state.dart';
-import 'package:fluid_ui_design/src/core/screen_size_helper.dart';
-import 'package:fluid_ui_design/src/core/viewport_config.dart';
-import 'package:fluid_ui_design/src/space/fluid_space.dart';
-import 'package:fluid_ui_design/src/space/space_config.dart';
-import 'package:fluid_ui_design/src/type/type_config.dart';
+import 'package:fluid_ui_design/fluid_ui_design.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:parameterized_test/parameterized_test.dart';
 
 void main() {
   group('for default settings', () {
     SpaceConfig spaceConfig = const SpaceConfig();
-
-    setUp(() => FluidConfigState.instance.setConfig(spaceConfig, const TypeConfig(), const ViewportConfig()));
 
     parameterizedTest(
       'Should nicely distribute between min and max',
@@ -37,20 +28,22 @@ void main() {
         double verySmallScreenSize = 20;
         double veryLargeScreenSize = 2000;
 
-        ScreenSizeHelper.instance.setWidth(Size(verySmallScreenSize, verySmallScreenSize));
-        expect(FluidSpace(spaceModifier: spaceModifier).value.round(), minimalSize);
+        FluidConfig config;
 
-        ScreenSizeHelper.instance.setWidth(Size(minimalScreenSize, minimalScreenSize));
-        expect(FluidSpace(spaceModifier: spaceModifier).value.round(), minimalSize);
+        config = FluidConfig(verySmallScreenSize);
+        expect(FluidSpace(fluidConfig: config, spaceModifier: spaceModifier).value.round(), minimalSize);
 
-        ScreenSizeHelper.instance.setWidth(Size(halfScreenSize, halfScreenSize));
-        expect(FluidSpace(spaceModifier: spaceModifier).value.round(), halfSize);
+        config = FluidConfig(minimalScreenSize);
+        expect(FluidSpace(fluidConfig: config, spaceModifier: spaceModifier).value.round(), minimalSize);
 
-        ScreenSizeHelper.instance.setWidth(Size(maximalScreenSize, maximalScreenSize));
-        expect(FluidSpace(spaceModifier: spaceModifier).value.round(), maximalSize);
+        config = FluidConfig(halfScreenSize);
+        expect(FluidSpace(fluidConfig: config, spaceModifier: spaceModifier).value.round(), halfSize);
 
-        ScreenSizeHelper.instance.setWidth(Size(veryLargeScreenSize, veryLargeScreenSize));
-        expect(FluidSpace(spaceModifier: spaceModifier).value.round(), maximalSize);
+        config = FluidConfig(maximalScreenSize);
+        expect(FluidSpace(fluidConfig: config, spaceModifier: spaceModifier).value.round(), maximalSize);
+
+        config = FluidConfig(veryLargeScreenSize);
+        expect(FluidSpace(fluidConfig: config, spaceModifier: spaceModifier).value.round(), maximalSize);
       }),
     );
   });

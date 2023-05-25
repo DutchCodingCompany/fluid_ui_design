@@ -1,20 +1,11 @@
-import 'dart:ui';
-
-import 'package:fluid_ui_design/src/core/fluid_config_state.dart';
 import 'package:fluid_ui_design/src/core/fluid_size.dart';
-import 'package:fluid_ui_design/src/core/screen_size_helper.dart';
+import 'package:fluid_ui_design/src/core/theme/fluid_config_theme_extension.dart';
 import 'package:fluid_ui_design/src/core/viewport_config.dart';
-import 'package:fluid_ui_design/src/space/space_config.dart';
-import 'package:fluid_ui_design/src/type/type_config.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:parameterized_test/parameterized_test.dart';
 
 void main() {
   group('for default settings', () {
-    setUp(() => FluidConfigState.instance.setConfig(const SpaceConfig(), const TypeConfig(), const ViewportConfig()));
-
-    const FluidSize size = FluidSize(min: 100, max: 200);
-
     parameterizedTest(
       'Should nicely distribute between min and max',
       [
@@ -25,13 +16,12 @@ void main() {
         [2000.0, 200.0]
       ],
       p2((double screenSize, double expectedSize) {
-        ScreenSizeHelper.instance.setWidth(Size(screenSize, screenSize));
+        FluidConfig config = FluidConfig(screenSize);
+        FluidSize size = FluidSize(fluidConfig: config, min: 100, max: 200);
 
         expect(size.value, expectedSize);
       }),
     );
-
-    const FluidSize shrinkingSize = FluidSize(min: 200, max: 100);
 
     parameterizedTest(
       'Also works when max is smaller then min',
@@ -43,19 +33,15 @@ void main() {
         [2000.0, 100.0]
       ],
       p2((double screenSize, double expectedSize) {
-        ScreenSizeHelper.instance.setWidth(Size(screenSize, screenSize));
+        FluidConfig config = FluidConfig(screenSize);
+        FluidSize size = FluidSize(fluidConfig: config, min: 200, max: 100);
 
-        expect(shrinkingSize.value, expectedSize);
+        expect(size.value, expectedSize);
       }),
     );
   });
 
   group('with custom viewport settings', () {
-    setUp(() => FluidConfigState.instance.setConfig(
-        const SpaceConfig(), const TypeConfig(), const ViewportConfig(minViewportSize: 200, maxViewportSize: 1000)));
-
-    const FluidSize size = FluidSize(min: 100, max: 200);
-
     parameterizedTest(
       'Should nicely distribute between min and max',
       [
@@ -66,8 +52,9 @@ void main() {
         [2000.0, 200.0]
       ],
       p2((double screenSize, double expectedSize) {
-        ScreenSizeHelper.instance.setWidth(Size(screenSize, screenSize));
-
+        FluidConfig config =
+            FluidConfig(screenSize, viewportConfig: const ViewportConfig(minViewportSize: 200, maxViewportSize: 1000));
+        FluidSize size = FluidSize(fluidConfig: config, min: 100, max: 200);
         expect(size.value, expectedSize);
       }),
     );

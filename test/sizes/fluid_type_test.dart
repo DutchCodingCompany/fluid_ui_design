@@ -1,19 +1,10 @@
-import 'dart:ui';
-
-import 'package:fluid_ui_design/src/core/fluid_config_state.dart';
-import 'package:fluid_ui_design/src/core/screen_size_helper.dart';
-import 'package:fluid_ui_design/src/core/viewport_config.dart';
-import 'package:fluid_ui_design/src/space/space_config.dart';
-import 'package:fluid_ui_design/src/type/fluid_type.dart';
-import 'package:fluid_ui_design/src/type/type_config.dart';
+import 'package:fluid_ui_design/fluid_ui_design.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:parameterized_test/parameterized_test.dart';
 
 void main() {
   group('for default settings', () {
     TypeConfig typeConfig = const TypeConfig();
-
-    setUp(() => FluidConfigState.instance.setConfig(const SpaceConfig(), typeConfig, const ViewportConfig()));
 
     parameterizedTest(
       'Should nicely distribute between min and max',
@@ -49,20 +40,25 @@ void main() {
         double verySmallScreenSize = 20;
         double veryLargeScreenSize = 2000;
 
-        ScreenSizeHelper.instance.setWidth(Size(verySmallScreenSize, verySmallScreenSize));
-        expect(double.parse(FluidType(scaleStep).value.toStringAsFixed(2)), minimalSize);
+        FluidConfig config;
+        config = FluidConfig(verySmallScreenSize);
+        expect(
+            double.parse(FluidType(fluidConfig: config, scaleStep: scaleStep).value.toStringAsFixed(2)), minimalSize);
 
-        ScreenSizeHelper.instance.setWidth(Size(minimalScreenSize, minimalScreenSize));
-        expect(double.parse(FluidType(scaleStep).value.toStringAsFixed(2)), minimalSize);
+        config = FluidConfig(minimalScreenSize);
+        expect(
+            double.parse(FluidType(fluidConfig: config, scaleStep: scaleStep).value.toStringAsFixed(2)), minimalSize);
 
-        ScreenSizeHelper.instance.setWidth(Size(halfScreenSize, halfScreenSize));
-        expect(double.parse(FluidType(scaleStep).value.toStringAsFixed(2)), halfSize);
+        config = FluidConfig(halfScreenSize);
+        expect(double.parse(FluidType(fluidConfig: config, scaleStep: scaleStep).value.toStringAsFixed(2)), halfSize);
 
-        ScreenSizeHelper.instance.setWidth(Size(maximalScreenSize, maximalScreenSize));
-        expect(double.parse(FluidType(scaleStep).value.toStringAsFixed(2)), maximalSize);
+        config = FluidConfig(maximalScreenSize);
+        expect(
+            double.parse(FluidType(fluidConfig: config, scaleStep: scaleStep).value.toStringAsFixed(2)), maximalSize);
 
-        ScreenSizeHelper.instance.setWidth(Size(veryLargeScreenSize, veryLargeScreenSize));
-        expect(double.parse(FluidType(scaleStep).value.toStringAsFixed(2)), maximalSize);
+        config = FluidConfig(veryLargeScreenSize);
+        expect(
+            double.parse(FluidType(fluidConfig: config, scaleStep: scaleStep).value.toStringAsFixed(2)), maximalSize);
       }),
     );
   });

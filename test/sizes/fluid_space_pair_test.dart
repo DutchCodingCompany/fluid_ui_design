@@ -1,20 +1,10 @@
-import 'dart:ui';
-
-import 'package:fluid_ui_design/src/core/fluid_config_state.dart';
-import 'package:fluid_ui_design/src/core/screen_size_helper.dart';
-import 'package:fluid_ui_design/src/core/viewport_config.dart';
-import 'package:fluid_ui_design/src/space/fluid_space.dart';
-import 'package:fluid_ui_design/src/space/fluid_space_pair.dart';
-import 'package:fluid_ui_design/src/space/space_config.dart';
-import 'package:fluid_ui_design/src/type/type_config.dart';
+import 'package:fluid_ui_design/fluid_ui_design.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:parameterized_test/parameterized_test.dart';
 
 void main() {
   group('for default settings', () {
     SpaceConfig spaceConfig = const SpaceConfig();
-
-    setUp(() => FluidConfigState.instance.setConfig(spaceConfig, const TypeConfig(), const ViewportConfig()));
 
     parameterizedTest(
       'Should nicely distribute between min and max',
@@ -39,47 +29,52 @@ void main() {
         double verySmallScreenSize = 20;
         double veryLargeScreenSize = 2000;
 
-        ScreenSizeHelper.instance.setWidth(Size(verySmallScreenSize, verySmallScreenSize));
+        FluidConfig config = FluidConfig(verySmallScreenSize);
         expect(
             FluidSpacePair(
-                    start: FluidSpace(spaceModifier: spaceModifierStart),
-                    end: FluidSpace(spaceModifier: spaceModifierEnd))
+                    fluidConfig: config,
+                    start: FluidSpace(fluidConfig: config, spaceModifier: spaceModifierStart),
+                    end: FluidSpace(fluidConfig: config, spaceModifier: spaceModifierEnd))
                 .value
                 .round(),
             minimalSize);
 
-        ScreenSizeHelper.instance.setWidth(Size(minimalScreenSize, minimalScreenSize));
+        config = FluidConfig(minimalScreenSize);
         expect(
             FluidSpacePair(
-                    start: FluidSpace(spaceModifier: spaceModifierStart),
-                    end: FluidSpace(spaceModifier: spaceModifierEnd))
+                    fluidConfig: config,
+                    start: FluidSpace(fluidConfig: config, spaceModifier: spaceModifierStart),
+                    end: FluidSpace(fluidConfig: config, spaceModifier: spaceModifierEnd))
                 .value
                 .round(),
             minimalSize);
 
-        ScreenSizeHelper.instance.setWidth(Size(halfScreenSize, halfScreenSize));
+        config = FluidConfig(halfScreenSize);
         expect(
             FluidSpacePair(
-                    start: FluidSpace(spaceModifier: spaceModifierStart),
-                    end: FluidSpace(spaceModifier: spaceModifierEnd))
+                    fluidConfig: config,
+                    start: FluidSpace(fluidConfig: config, spaceModifier: spaceModifierStart),
+                    end: FluidSpace(fluidConfig: config, spaceModifier: spaceModifierEnd))
                 .value
                 .round(),
             halfSize);
 
-        ScreenSizeHelper.instance.setWidth(Size(maximalScreenSize, maximalScreenSize));
+        config = FluidConfig(maximalScreenSize);
         expect(
             FluidSpacePair(
-                    start: FluidSpace(spaceModifier: spaceModifierStart),
-                    end: FluidSpace(spaceModifier: spaceModifierEnd))
+                    fluidConfig: config,
+                    start: FluidSpace(fluidConfig: config, spaceModifier: spaceModifierStart),
+                    end: FluidSpace(fluidConfig: config, spaceModifier: spaceModifierEnd))
                 .value
                 .round(),
             maximalSize);
 
-        ScreenSizeHelper.instance.setWidth(Size(veryLargeScreenSize, veryLargeScreenSize));
+        config = FluidConfig(veryLargeScreenSize);
         expect(
             FluidSpacePair(
-                    start: FluidSpace(spaceModifier: spaceModifierStart),
-                    end: FluidSpace(spaceModifier: spaceModifierEnd))
+                    fluidConfig: config,
+                    start: FluidSpace(fluidConfig: config, spaceModifier: spaceModifierStart),
+                    end: FluidSpace(fluidConfig: config, spaceModifier: spaceModifierEnd))
                 .value
                 .round(),
             maximalSize);
