@@ -1,7 +1,6 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:quiver/iterables.dart';
 
 class FluidGrid extends StatelessWidget {
   const FluidGrid({
@@ -23,24 +22,13 @@ class FluidGrid extends StatelessWidget {
   final double? itemSpacing;
   final bool keepItemsSameSize;
 
-  @override
-  Widget build(BuildContext context) {
-    final childrenPerRow =
-        math.max(math.min((width / minimalChildWidth).floor(), maxChildrenPerRow ?? children.length), 1);
-
-    return Column(
-      children: partition(children, childrenPerRow)
-          .map(
-            (row) => Padding(
-              padding: EdgeInsets.only(bottom: bottomSpacing ?? 0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: childrenWithSpacers(row, childrenPerRow, children.last == row.last),
-              ),
-            ),
-          )
-          .toList(),
-    );
+  List<List<Widget>> _partitionWidgets(List<Widget> widgets, int childrenPerRow) {
+    var chunks = <List<Widget>>[];
+    int chunkSize = 2;
+    for (var i = 0; i < widgets.length; i += chunkSize) {
+      chunks.add(widgets.sublist(i, i + chunkSize > widgets.length ? widgets.length : i + chunkSize));
+    }
+    return chunks;
   }
 
   List<Widget> childrenWithSpacers(List<Widget> row, int childrenPerRow, bool isLastRow) {
@@ -68,5 +56,25 @@ class FluidGrid extends StatelessWidget {
       );
     }
     return childrenWithSpacers;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final childrenPerRow =
+        math.max(math.min((width / minimalChildWidth).floor(), maxChildrenPerRow ?? children.length), 1);
+
+    return Column(
+      children: _partitionWidgets(children, childrenPerRow)
+          .map(
+            (row) => Padding(
+              padding: EdgeInsets.only(bottom: bottomSpacing ?? 0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: childrenWithSpacers(row, childrenPerRow, children.last == row.last),
+              ),
+            ),
+          )
+          .toList(),
+    );
   }
 }

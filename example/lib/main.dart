@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
           config,
         ],
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }

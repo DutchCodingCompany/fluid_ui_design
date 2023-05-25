@@ -4,8 +4,6 @@ import 'package:parameterized_test/parameterized_test.dart';
 
 void main() {
   group('for default settings', () {
-    TypeConfig typeConfig = const TypeConfig();
-
     parameterizedTest(
       'Should nicely distribute between min and max',
       [
