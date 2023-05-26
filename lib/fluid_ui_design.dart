@@ -7,6 +7,8 @@ export 'src/space/fluid_space.dart';
 export 'src/space/fluid_space_pair.dart';
 export 'src/space/space_config.dart';
 export 'src/type/fluid_type.dart';
+export 'src/type/text_scale_helper/text_scale_extension.dart';
+export 'src/type/text_scale_helper/text_scale_helper.dart';
 export 'src/type/type_config.dart';
 export 'src/widgets/fluid_button.dart';
 export 'src/widgets/fluid_grid.dart';
