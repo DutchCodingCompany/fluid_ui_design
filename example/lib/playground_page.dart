@@ -100,7 +100,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                   ),
                 ),
                 width: _config.screenWidth,
-                height: _config.screenWidth / 4 * 3,
+                height: _config.screenWidth * FluidSize(fluidConfig: _config, min: 1.25, max: 0.75).value,
                 child: SingleChildScrollView(
                   child: switch (pageType) {
                     PageType.typefaceScale => TypefaceScaleWidget(config: _config, textScaleHelper: _value!),
