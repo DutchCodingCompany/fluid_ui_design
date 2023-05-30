@@ -58,6 +58,15 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
         child: SafeArea(
             child: Column(
           children: [
+            // show logo-no-background.png
+            Container(
+              color: Theme.of(context).primaryColor,
+              padding: EdgeInsets.all(context.fluid.spaces.m),
+              child: Image.asset(
+                "assets/logo/logo-no-background.png",
+                width: double.infinity,
+              ),
+            ),
             ExpansionTile(
               title: const Text("Page Type"),
               leading: const Icon(Icons.pages), //add icon
