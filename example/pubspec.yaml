@@ -1,5 +1,5 @@
 name: fluid_ui_design_example
-description: A framework for building Fluid Resopnsive UIs in Flutter.
+description: A framework for building Fluid Responsive UIs in Flutter.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
