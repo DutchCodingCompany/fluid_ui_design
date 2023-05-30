@@ -31,12 +31,13 @@ class FluidConfig extends ThemeExtension<FluidConfig> {
   }
 
   @override
-  FluidConfig copyWith({double? screenWidth}) {
+  FluidConfig copyWith(
+      {double? screenWidth, SpaceConfig? spaceConfig, TypeConfig? typeConfig, ViewportConfig? viewportConfig}) {
     return FluidConfig(
       screenWidth ?? this.screenWidth,
-      spaceConfig: spaceConfig,
-      typeConfig: typeConfig,
-      viewportConfig: viewportConfig,
+      spaceConfig: spaceConfig ?? this.spaceConfig,
+      typeConfig: typeConfig ?? this.typeConfig,
+      viewportConfig: viewportConfig ?? this.viewportConfig,
     );
   }
 

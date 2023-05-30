@@ -6,6 +6,21 @@ class TypeConfig {
     this.maxTypeScaleModifier = 1.333,
   });
 
+  //Copy With
+  TypeConfig copyWith({
+    double? minBaseFontSize,
+    double? maxBaseFontSize,
+    double? minTypeScaleModifier,
+    double? maxTypeScaleModifier,
+  }) {
+    return TypeConfig(
+      minBaseFontSize: minBaseFontSize ?? this.minBaseFontSize,
+      maxBaseFontSize: maxBaseFontSize ?? this.maxBaseFontSize,
+      minTypeScaleModifier: minTypeScaleModifier ?? this.minTypeScaleModifier,
+      maxTypeScaleModifier: maxTypeScaleModifier ?? this.maxTypeScaleModifier,
+    );
+  }
+
   /// Base Minimal Value for [FluidType]
   /// default is 17
   final double minBaseFontSize;

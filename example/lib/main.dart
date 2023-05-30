@@ -12,11 +12,15 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    FluidConfig config = FluidConfig.fromContext(context, spaceConfig: const SpaceConfig());
+    FluidConfig config = FluidConfig.fromContext(context,
+        spaceConfig: const SpaceConfig(),
+        typeConfig: const TypeConfig(minBaseFontSize: 10, maxBaseFontSize: 12),
+        viewportConfig: const ViewportConfig());
 
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
+        primaryColor: const Color(0xffe65728),
         textTheme: TextTheme(
           displayLarge: config.fromGoogleFont(GoogleFonts.firaSans).bold.displayLarge,
           displayMedium: config.fromGoogleFont(GoogleFonts.firaSans).bold.displayMedium,

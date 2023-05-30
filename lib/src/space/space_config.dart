@@ -15,6 +15,34 @@ class SpaceConfig {
     this.xxxlModifier = 6,
   });
 
+  SpaceConfig copyWith({
+    double? baseMin,
+    double? baseMax,
+    double? xxxsModifier,
+    double? xxsModifier,
+    double? xsModifier,
+    double? sModifier,
+    double? mModifier,
+    double? lModifier,
+    double? xlModifier,
+    double? xxlModifier,
+    double? xxxlModifier,
+  }) {
+    return SpaceConfig(
+      baseMin: baseMin ?? this.baseMin,
+      baseMax: baseMax ?? this.baseMax,
+      xxxsModifier: xxxsModifier ?? this.xxxsModifier,
+      xxsModifier: xxsModifier ?? this.xxsModifier,
+      xsModifier: xsModifier ?? this.xsModifier,
+      sModifier: sModifier ?? this.sModifier,
+      mModifier: mModifier ?? this.mModifier,
+      lModifier: lModifier ?? this.lModifier,
+      xlModifier: xlModifier ?? this.xlModifier,
+      xxlModifier: xxlModifier ?? this.xxlModifier,
+      xxxlModifier: xxxlModifier ?? this.xxxlModifier,
+    );
+  }
+
   /// Base Minimal Value for [FluidSpace]
   final double baseMin;
 
