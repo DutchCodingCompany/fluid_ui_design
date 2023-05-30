@@ -1,12 +1,10 @@
 import 'package:fluid_ui_design/fluid_ui_design.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'demo_screens/mockup_page.dart';
 import 'demo_screens/typeface_demo/typeface_scale_widget.dart';
 import 'util/widget_list_extension.dart';
-import 'widgets/setting_input_field.dart';
 
 class PlaygroundPage extends StatefulWidget {
   const PlaygroundPage({super.key});
@@ -20,7 +18,6 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
   TextScaleHelper? _value;
   FluidConfig _config = const FluidConfig(1024);
   PageType pageType = PageType.mockupPage;
-  bool sidemenuOpened = false;
 
   List<TextScaleHelper> availableFonts = [];
   @override
@@ -54,44 +51,11 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        leading: InkWell(
-            child: const Icon(Icons.menu),
-            onTap: () => setState(() {
-                  sidemenuOpened = !sidemenuOpened;
-                })),
-        title: SvgPicture.asset('assets/logo/logo-color.svg', semanticsLabel: 'Fluid UI Logo', height: 40, width: 40),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
-            AnimatedContainer(
-                duration: const Duration(milliseconds: 600),
-                width: sidemenuOpened ? FluidSize(fluidConfig: context.fluid, min: 300, max: 400).value : 0,
-                child: Column(
-                  children: [
-                    Text('FluidConfig Viewport Config', style: Theme.of(context).textTheme.bodySmall),
-                    SizedBox(
-                      height: context.fluid.spaces.s,
-                    ),
-                    SettingInputField(
-                        labelText: 'Min Viewport Width',
-                        value: _config.viewportConfig.minViewportSize.toString(),
-                        onChanged: (value) => setState(() {
-                              _config = _config.copyWith(
-                                  viewportConfig:
-                                      _config.viewportConfig.copyWith(minViewportSize: double.parse(value)));
-                            })),
-                    SettingInputField(
-                        labelText: 'Max Viewport Width',
-                        value: _config.viewportConfig.maxViewportSize.toString(),
-                        onChanged: (value) => setState(() {
-                              _config = _config.copyWith(
-                                  viewportConfig:
-                                      _config.viewportConfig.copyWith(maxViewportSize: double.parse(value)));
-                            })),
-                  ],
-                )),
             SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.all(context.fluid.spaces.m),
