@@ -73,16 +73,21 @@ If you need to access the config in your code, you can use the FluidConfig class
 We saved this config file in the theme, so you can access it from the theme. Using the following code will retrieve the config from the theme we created earlier;
 
 ```dart
-  FluidConfig config = FluidConfig.fromContext(context);
+  FluidConfig config = FluidConfig.of(context);
 ```
 
+or using the extension on BuildContext
+
+```dart
+  FluidConfig config = context.fluid;
+```
 
 ### FluidSize
 
 Fluid Size is the basic class to determine a size. It can be used to get a linear value based on the current screen size compared to the min and max set to the FluidWrapper.
 
 ```dart
-FluidSize(fluidConfig: FluidConfig.fromContext(context),  min: 100, max: 200);
+FluidSize(fluidConfig: context.fluid,  min: 100, max: 200);
 ```
 
 When on the smallest screensize/breakpoint it will return 100. When on the maximal screensize/breakpoint it will return 200. When on a screensize/breakpoint in between it will return a value in between.
@@ -93,7 +98,7 @@ FluidSpace is a layer over Fluid Size based on modifier scale set in the setting
 To get a specific fluid space, you can get it by using the following code;
 
 ```dart
-SizedBox(height: FluidSpaces(FluidConfig.fromContext(context)).m.value);
+SizedBox(height: FluidSpaces(context.fluid).m.value);
 ```
 
 A short way to write this is with a extension on BuildContext. This extension is available in the package.
@@ -107,9 +112,9 @@ Sometimes you want to have a FluidSpace grow more or less based on screensize. O
 
 ```dart
 FluidSpacePair(
-  fluidConfig: FluidConfig.fromContext(context),
-  small: FluidSpaces(FluidConfig.fromContext(context)).m,
-  large: FluidSpaces(FluidConfig.fromContext(context)).xl,
+  fluidConfig: context.fluid,
+  small: FluidSpaces(context.fluid).m,
+  large: FluidSpaces(context.fluid).xl,
 );
 ```
 
@@ -118,7 +123,7 @@ FluidSpacePair(
 FluidType is used to create a logical typescale. For typography, you want to have more difference in your fontsizes based on screensize. Using FluidType also scales the scale modifier based on screen size within the viewports. This means that the difference in font size will be bigger on a large screen than on a small screen. This is based on the Utopia principle. In general, we use a scale that from -10 to 10, where 0 is the base font size. This scale can be changed in the settings. To get the value of a specific scale, you can use the following code;
 
 ```dart
-FluidType(fluidConfig: FluidConfig.fromContext(context), scaleStep: 2).value;
+FluidType(fluidConfig: context.fluid, scaleStep: 2).value;
 ```
 
 A short way to write this is with a extension on BuildContext. This extension is available in the package.
