@@ -1,10 +1,12 @@
 import 'package:fluid_ui_design/fluid_ui_design.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'demo_screens/mockup_page.dart';
 import 'demo_screens/typeface_demo/typeface_scale_widget.dart';
 import 'util/widget_list_extension.dart';
+import 'widgets/setting_input_field.dart';
 
 class PlaygroundPage extends StatefulWidget {
   const PlaygroundPage({super.key});
@@ -18,6 +20,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
   TextScaleHelper? _value;
   FluidConfig _config = const FluidConfig(1024);
   PageType pageType = PageType.mockupPage;
+  bool sidemenuOpened = false;
 
   List<TextScaleHelper> availableFonts = [];
   @override
@@ -49,67 +52,114 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        leading: InkWell(
+            child: const Icon(Icons.menu),
+            onTap: () => setState(() {
+                  sidemenuOpened = !sidemenuOpened;
+                })),
+        title: SvgPicture.asset('assets/logo/logo-color.svg', semanticsLabel: 'Fluid UI Logo', height: 40, width: 40),
+      ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(context.fluid.spaces.m),
-          child: Column(
-            children: [
-              Wrap(
-                children: PageType.values
-                    .map(
-                      (e) => ChoiceChip(
-                        label: Text(e.toString().split('.').last),
-                        selected: pageType == e,
-                        onSelected: (bool selected) => setState(() {
-                          pageType = e;
-                        }),
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            AnimatedContainer(
+                duration: const Duration(milliseconds: 600),
+                width: sidemenuOpened ? FluidSize(fluidConfig: context.fluid, min: 300, max: 400).value : 0,
+                child: Column(
+                  children: [
+                    Text('FluidConfig Viewport Config', style: Theme.of(context).textTheme.bodySmall),
+                    SizedBox(
+                      height: context.fluid.spaces.s,
+                    ),
+                    SettingInputField(
+                        labelText: 'Min Viewport Width',
+                        value: _config.viewportConfig.minViewportSize.toString(),
+                        onChanged: (value) => setState(() {
+                              _config = _config.copyWith(
+                                  viewportConfig:
+                                      _config.viewportConfig.copyWith(minViewportSize: double.parse(value)));
+                            })),
+                    SettingInputField(
+                        labelText: 'Max Viewport Width',
+                        value: _config.viewportConfig.maxViewportSize.toString(),
+                        onChanged: (value) => setState(() {
+                              _config = _config.copyWith(
+                                  viewportConfig:
+                                      _config.viewportConfig.copyWith(maxViewportSize: double.parse(value)));
+                            })),
+                  ],
+                )),
+            SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.all(context.fluid.spaces.m),
+                child: Column(
+                  children: [
+                    Wrap(
+                      children: PageType.values
+                          .map(
+                            (e) => ChoiceChip(
+                              selectedColor: Theme.of(context).primaryColor,
+                              label: Text(e.toString().split('.').last),
+                              selected: pageType == e,
+                              onSelected: (bool selected) => setState(() {
+                                pageType = e;
+                              }),
+                            ),
+                          )
+                          .toList()
+                          .withSeperator(SizedBox(width: context.fluid.spaces.m)),
+                    ),
+                    SizedBox(height: context.fluid.spaces.xs),
+                    Wrap(
+                      children: availableFonts
+                          .map(
+                            (e) => ChoiceChip(
+                              selectedColor: Theme.of(context).primaryColor,
+                              label: Text(e.bodyLarge.fontFamily!),
+                              selected: _value == e,
+                              onSelected: (bool selected) => setSelectedFontIndex(availableFonts.indexOf(e)),
+                            ),
+                          )
+                          .toList()
+                          .withSeperator(SizedBox(width: context.fluid.spaces.m)),
+                    ),
+                    SizedBox(
+                      width: 500,
+                      child: Slider(
+                        activeColor: Theme.of(context).primaryColor,
+                        value: _config.screenWidth,
+                        min: _config.viewportConfig.minViewportSize,
+                        max: _config.viewportConfig.maxViewportSize,
+                        label: _config.screenWidth.round().toString(),
+                        onChanged: (double value) => setWidth(value),
+                      ),
+                    ),
+                    Text('Screenwidth: ${_config.screenWidth}'),
+                    Container(
+                      //add borders
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Theme.of(context).colorScheme.primary,
+                          width: 2,
+                        ),
+                      ),
+                      width: _config.screenWidth,
+                      height: _config.screenWidth * FluidSize(fluidConfig: _config, min: 1.25, max: 0.75).value,
+                      child: SingleChildScrollView(
+                        child: switch (pageType) {
+                          PageType.typefaceScale => TypefaceScaleWidget(config: _config, textScaleHelper: _value!),
+                          PageType.mockupPage => MockupPage(config: _config, textScaleHelper: _value!),
+                        },
                       ),
                     )
-                    .toList()
-                    .withSeperator(SizedBox(width: context.fluid.spaces.m)),
-              ),
-              Wrap(
-                children: availableFonts
-                    .map(
-                      (e) => ChoiceChip(
-                        label: Text(e.bodyLarge.fontFamily!),
-                        selected: _value == e,
-                        onSelected: (bool selected) => setSelectedFontIndex(availableFonts.indexOf(e)),
-                      ),
-                    )
-                    .toList()
-                    .withSeperator(SizedBox(width: context.fluid.spaces.m)),
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: Slider(
-                  value: _config.screenWidth,
-                  min: _config.viewportConfig.minViewportSize,
-                  max: _config.viewportConfig.maxViewportSize,
-                  label: _config.screenWidth.round().toString(),
-                  onChanged: (double value) => setWidth(value),
+                  ],
                 ),
               ),
-              Text('Screenwidth: ${_config.screenWidth}'),
-              Container(
-                //add borders
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Theme.of(context).colorScheme.primary,
-                    width: 2,
-                  ),
-                ),
-                width: _config.screenWidth,
-                height: _config.screenWidth * FluidSize(fluidConfig: _config, min: 1.25, max: 0.75).value,
-                child: SingleChildScrollView(
-                  child: switch (pageType) {
-                    PageType.typefaceScale => TypefaceScaleWidget(config: _config, textScaleHelper: _value!),
-                    PageType.mockupPage => MockupPage(config: _config, textScaleHelper: _value!),
-                  },
-                ),
-              )
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

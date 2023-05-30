@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../../../fluid_ui_design.dart';
-import 'text_scale_helper.dart';
 
 extension TextScaleExtension on ThemeData {
   TextScaleHelper fromGoogleFont(
