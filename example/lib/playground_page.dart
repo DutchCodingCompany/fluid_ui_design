@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:fluid_ui_design/fluid_ui_design.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +17,7 @@ class PlaygroundPage extends StatefulWidget {
 class _PlaygroundPageState extends State<PlaygroundPage> {
   int currentFontIndex = 0;
   TextScaleHelper? _value;
+
   FluidConfig _config = const FluidConfig(1024);
   PageType pageType = PageType.mockupPage;
 
@@ -52,80 +54,73 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
+      drawer: Drawer(
+        child: SafeArea(
+            child: Column(
           children: [
-            SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.all(context.fluid.spaces.m),
-                child: Column(
-                  children: [
-                    Wrap(
-                      children: PageType.values
-                          .map(
-                            (e) => ChoiceChip(
-                              selectedColor: Theme.of(context).primaryColor,
-                              label: Text(e.toString().split('.').last),
-                              selected: pageType == e,
-                              onSelected: (bool selected) => setState(() {
-                                pageType = e;
-                              }),
-                            ),
-                          )
-                          .toList()
-                          .withSeperator(SizedBox(width: context.fluid.spaces.m)),
-                    ),
-                    SizedBox(height: context.fluid.spaces.xs),
-                    Wrap(
-                      children: availableFonts
-                          .map(
-                            (e) => ChoiceChip(
-                              selectedColor: Theme.of(context).primaryColor,
-                              label: Text(e.bodyLarge.fontFamily!),
-                              selected: _value == e,
-                              onSelected: (bool selected) => setSelectedFontIndex(availableFonts.indexOf(e)),
-                            ),
-                          )
-                          .toList()
-                          .withSeperator(SizedBox(width: context.fluid.spaces.m)),
-                    ),
-                    SizedBox(
-                      width: 500,
-                      child: Slider(
-                        activeColor: Theme.of(context).primaryColor,
-                        value: _config.screenWidth,
-                        min: _config.viewportConfig.minViewportSize,
-                        max: _config.viewportConfig.maxViewportSize,
-                        label: _config.screenWidth.round().toString(),
-                        onChanged: (double value) => setWidth(value),
-                      ),
-                    ),
-                    Text('Screenwidth: ${_config.screenWidth}'),
-                    Container(
-                      //add borders
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Theme.of(context).colorScheme.primary,
-                          width: 2,
-                        ),
-                      ),
-                      width: _config.screenWidth,
-                      height: _config.screenWidth * FluidSize(fluidConfig: _config, min: 1.25, max: 0.75).value,
-                      child: SingleChildScrollView(
-                        child: switch (pageType) {
-                          PageType.typefaceScale => TypefaceScaleWidget(config: _config, textScaleHelper: _value!),
-                          PageType.mockupPage => MockupPage(config: _config, textScaleHelper: _value!),
-                        },
-                      ),
-                    )
-                  ],
-                ),
-              ),
+            ExpansionTile(
+              title: const Text("Page Type"),
+              leading: const Icon(Icons.pages), //add icon
+              children: [
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(context.fluid.spaces.s),
+                  child: Wrap(
+                    children: PageType.values
+                        .map(
+                          (e) => ChoiceChip(
+                            selectedColor: Theme.of(context).primaryColor,
+                            label: Text(e.toString().split('.').last),
+                            selected: pageType == e,
+                            onSelected: (bool selected) => setState(() {
+                              pageType = e;
+                            }),
+                          ),
+                        )
+                        .toList()
+                        .withSeperator(SizedBox(width: context.fluid.spaces.m)),
+                  ),
+                )
+              ],
             ),
+            ExpansionTile(
+              title: const Text("Font types"),
+              leading: const Icon(Icons.font_download), //add icon
+              children: [
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(context.fluid.spaces.s),
+                  child: Wrap(
+                    children: availableFonts
+                        .map(
+                          (e) => ChoiceChip(
+                            selectedColor: Theme.of(context).primaryColor,
+                            label: Text(e.bodyLarge.fontFamily!),
+                            selected: _value == e,
+                            onSelected: (bool selected) => setSelectedFontIndex(availableFonts.indexOf(e)),
+                          ),
+                        )
+                        .toList()
+                        .withSeperator(SizedBox(width: context.fluid.spaces.m)),
+                  ),
+                ),
+
+                //more child menu
+              ],
+            )
           ],
-        ),
+        )),
       ),
+      body: DevicePreview(
+          enabled: true,
+          builder: (context) => Scaffold(
+                body: SingleChildScrollView(
+                  child: switch (pageType) {
+                    PageType.typefaceScale => TypefaceScaleWidget(config: _config, textScaleHelper: _value!),
+                    PageType.mockupPage => MockupPage(config: _config, textScaleHelper: _value!),
+                  },
+                ),
+              )),
     );
   }
 }
