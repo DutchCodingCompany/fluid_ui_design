@@ -1,3 +1,3 @@
-## 0.0.1
+## 0.0.1-beta.1
 
-* TODO: Describe initial release.
+* Implemented first version of FluidUI and Playground Example
