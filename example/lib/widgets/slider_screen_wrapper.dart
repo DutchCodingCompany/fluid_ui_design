@@ -27,7 +27,6 @@ class SliderScreenWrapper extends StatelessWidget {
           value: config.screenWidth,
           min: config.viewportConfig.minViewportSize,
           max: config.viewportConfig.maxViewportSize,
-          divisions: (config.viewportConfig.maxViewportSize - config.viewportConfig.minViewportSize).round(),
           onChanged: onWidthChangeCallback,
         ),
         SizedBox(height: context.fluid.spaces.m),

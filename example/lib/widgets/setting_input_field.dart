@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class SettingInputField extends StatelessWidget {
+import '../util/debouncer.dart';
+
+class SettingInputField extends StatefulWidget {
   const SettingInputField({
     super.key,
     required this.labelText,
@@ -18,20 +20,38 @@ class SettingInputField extends StatelessWidget {
   final String value;
 
   @override
+  State<SettingInputField> createState() => _SettingInputFieldState();
+}
+
+class _SettingInputFieldState extends State<SettingInputField> {
+  late String value;
+
+  late Debouncer debouncer;
+
+  @override
+  void initState() {
+    super.initState();
+    value = widget.value;
+    debouncer = Debouncer(milliseconds: 500);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      initialValue: value,
-      keyboardType:
-          isDouble ? const TextInputType.numberWithOptions(decimal: true) : const TextInputType.numberWithOptions(),
-      inputFormatters:
-          isDouble ? <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))] : null,
+      initialValue: widget.value,
+      keyboardType: widget.isDouble
+          ? const TextInputType.numberWithOptions(decimal: true)
+          : const TextInputType.numberWithOptions(),
+      inputFormatters: widget.isDouble
+          ? <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))]
+          : null,
       style: Theme.of(context).textTheme.bodySmall,
       decoration: InputDecoration(
         border: const UnderlineInputBorder(),
-        labelText: labelText,
+        labelText: widget.labelText,
         labelStyle: Theme.of(context).textTheme.bodySmall,
       ),
-      onChanged: onChanged,
+      onChanged: (String? v) => debouncer.run(() => widget.onChanged(v!)),
     );
   }
 }
