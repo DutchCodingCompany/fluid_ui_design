@@ -13,7 +13,7 @@ class MockupPage extends StatelessWidget {
       padding: EdgeInsets.all(FluidSize(fluidConfig: config, min: config.spaces.xxl, max: config.spaces.s).value),
       child: Column(
         children: [
-          Text('Welcome to this page', style: textScaleHelper.headlineLarge),
+          Text('Welcome to this page ${config.screenWidth}', style: textScaleHelper.headlineLarge),
           Row(
             children: [
               //a lot of lorum ipsum in text across multiple lines

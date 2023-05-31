@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'demo_screens/mockup_page.dart';
 import 'demo_screens/typeface_demo/typeface_scale_widget.dart';
 import 'util/widget_list_extension.dart';
+import 'widgets/slider_screen_wrapper.dart';
 
 class PlaygroundPage extends StatefulWidget {
   const PlaygroundPage({super.key});
@@ -113,7 +114,6 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                         .withSeperator(SizedBox(width: context.fluid.spaces.m)),
                   ),
                 ),
-
                 //more child menu
               ],
             )
@@ -122,12 +122,21 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
       ),
       body: DevicePreview(
           enabled: true,
-          builder: (context) => Scaffold(
-                body: SingleChildScrollView(
-                  child: switch (pageType) {
-                    PageType.typefaceScale => TypefaceScaleWidget(config: _config, textScaleHelper: _value!),
-                    PageType.mockupPage => MockupPage(config: _config, textScaleHelper: _value!),
-                  },
+          builder: (context) => MaterialApp(
+                useInheritedMediaQuery: true,
+                home: Scaffold(
+                  body: SliderScreenWrapper(
+                    enabled: DevicePreview.isEnabled(context),
+                    minimalScreenSize: _config.viewportConfig.minViewportSize,
+                    maximalScreenSize: _config.viewportConfig.maxViewportSize,
+                    config: _config,
+                    builder: (BuildContext context, FluidConfig adjustedConfig) => SingleChildScrollView(
+                      child: switch (pageType) {
+                        PageType.typefaceScale => TypefaceScaleWidget(config: adjustedConfig, textScaleHelper: _value!),
+                        PageType.mockupPage => MockupPage(config: adjustedConfig, textScaleHelper: _value!),
+                      },
+                    ),
+                  ),
                 ),
               )),
     );
