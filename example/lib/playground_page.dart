@@ -2,8 +2,11 @@ import 'package:fluid_ui_design/fluid_ui_design.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'demo_screens/fluid_size_config.dart';
 import 'demo_screens/mockup_page.dart';
+import 'demo_screens/mockup_settings_data_object.dart';
 import 'demo_screens/typeface_demo/typeface_scale_widget.dart';
+import 'demo_screens/typeface_type.dart';
 import 'util/widget_list_extension.dart';
 import 'widgets/setting_input_field.dart';
 import 'widgets/slider_screen_wrapper.dart';
@@ -22,11 +25,30 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
   FluidConfig _config = const FluidConfig(1024);
   PageType pageType = PageType.mockupPage;
 
+  late MockupSettingsDataObject mockupSettingsDataObject;
+
   List<TextScaleHelper> availableFonts = [];
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     setFonts();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    mockupSettingsDataObject = MockupSettingsDataObject(
+      typefaceTitle1: TypefaceType.headlineLarge,
+      typefaceTitle2: TypefaceType.headlineMedium,
+      typefaceBodyText1: TypefaceType.bodyMedium,
+      typefaceBodyText2: TypefaceType.bodyMedium,
+      pagePadding: FluidSizeConfig.spacePair('xxl', 's'),
+      spacingBetweenTextAndImage1: FluidSizeConfig.space('m'),
+      spacingBetweenTextAndImage2: FluidSizeConfig.space('m'),
+      spacingBetweenTitleAndText: FluidSizeConfig.space('m'),
+      spacingBetweenTextAndSubtitle: FluidSizeConfig.space('m'),
+      spacingBetweenSubtitleAndText: FluidSizeConfig.space('s'),
+    );
   }
 
   void setConfig(FluidConfig config) => setState(() {
@@ -348,7 +370,11 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
             config: _config,
             child: switch (pageType) {
               PageType.typefaceScale => TypefaceScaleWidget(config: _config, textScaleHelper: _value!),
-              PageType.mockupPage => MockupPage(config: _config, textScaleHelper: _value!),
+              PageType.mockupPage => MockupPage(
+                  config: _config,
+                  textScaleHelper: _value!,
+                  settingsDataObject: mockupSettingsDataObject,
+                ),
             },
           ),
         ),

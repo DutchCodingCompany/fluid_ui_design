@@ -1,19 +1,23 @@
 import 'package:fluid_ui_design/fluid_ui_design.dart';
 import 'package:flutter/material.dart';
 
+import 'mockup_settings_data_object.dart';
+
 class MockupPage extends StatelessWidget {
-  const MockupPage({super.key, required this.config, required this.textScaleHelper});
+  const MockupPage({super.key, required this.config, required this.textScaleHelper, required this.settingsDataObject});
 
   final FluidConfig config;
   final TextScaleHelper textScaleHelper;
+  final MockupSettingsDataObject settingsDataObject;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(FluidSize(fluidConfig: config, min: config.spaces.xxl, max: config.spaces.s).value),
+      padding: EdgeInsets.all(settingsDataObject.pagePadding.getSize(config)),
       child: Column(
         children: [
-          Text('Welcome to this page', style: textScaleHelper.headlineLarge),
+          Text('Welcome to this page', style: settingsDataObject.typefaceTitle1.getTextStyleForType(textScaleHelper)),
+          SizedBox(height: settingsDataObject.spacingBetweenTitleAndText.getSize(config)),
           Row(
             children: [
               //a lot of lorum ipsum in text across multiple lines
@@ -32,10 +36,10 @@ class MockupPage extends StatelessWidget {
                     'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia '
                     'Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. '
                     'Maecenas adipiscing ante non diam sodales hendrerit.',
-                    style: textScaleHelper.bodyMedium,
+                    style: settingsDataObject.typefaceBodyText1.getTextStyleForType(textScaleHelper),
                     maxLines: 10,
                   )),
-              SizedBox(width: config.spaces.m),
+              SizedBox(width: settingsDataObject.spacingBetweenTextAndImage1.getSize(config)),
               Flexible(
                 flex: 2,
                 child: Image.network(
@@ -43,9 +47,10 @@ class MockupPage extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: config.spaces.m),
-          Text('This is a smaller title to a next section', style: textScaleHelper.headlineSmall),
-          SizedBox(height: config.spaces.s),
+          SizedBox(height: settingsDataObject.spacingBetweenTextAndSubtitle.getSize(config)),
+          Text('This is a smaller title to a next section',
+              style: settingsDataObject.typefaceTitle2.getTextStyleForType(textScaleHelper)),
+          SizedBox(height: settingsDataObject.spacingBetweenSubtitleAndText.getSize(config)),
           Row(
             children: [
               Flexible(
@@ -69,7 +74,7 @@ class MockupPage extends StatelessWidget {
                     'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia '
                     'Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. '
                     'Maecenas adipiscing ante non diam sodales hendrerit.',
-                    style: textScaleHelper.bodyMedium,
+                    style: settingsDataObject.typefaceBodyText2.getTextStyleForType(textScaleHelper),
                     maxLines: 10,
                   )),
             ],
