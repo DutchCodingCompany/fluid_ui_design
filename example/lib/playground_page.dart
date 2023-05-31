@@ -132,6 +132,77 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                 )
               ],
             ),
+            if (pageType == PageType.mockupPage)
+              ExpansionTile(
+                title: const Text("Mockup Page Configuration"),
+                leading: const Icon(Icons.dashboard_customize_outlined), //add icon
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(context.fluid.spaces.s),
+                    child: DropdownMenu(
+                        initialSelection: mockupSettingsDataObject.typefaceTitle1,
+                        label: Text('Title Text Scale', style: Theme.of(context).textTheme.bodySmall),
+                        textStyle: Theme.of(context).textTheme.bodySmall,
+                        onSelected: (value) => setState(() {
+                              mockupSettingsDataObject = mockupSettingsDataObject.copyWith(typefaceTitle1: value);
+                            }),
+                        dropdownMenuEntries: TypefaceType.values
+                            .map((e) => DropdownMenuEntry(
+                                  value: e,
+                                  label: e.toString(),
+                                ))
+                            .toList()),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(context.fluid.spaces.s),
+                    child: DropdownMenu(
+                        initialSelection: mockupSettingsDataObject.typefaceTitle2,
+                        label: Text('Title Text Scale', style: Theme.of(context).textTheme.bodySmall),
+                        textStyle: Theme.of(context).textTheme.bodySmall,
+                        onSelected: (value) => setState(() {
+                              mockupSettingsDataObject = mockupSettingsDataObject.copyWith(typefaceTitle2: value);
+                            }),
+                        dropdownMenuEntries: TypefaceType.values
+                            .map((e) => DropdownMenuEntry(
+                                  value: e,
+                                  label: e.toString(),
+                                ))
+                            .toList()),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(context.fluid.spaces.s),
+                    child: DropdownMenu(
+                        initialSelection: mockupSettingsDataObject.typefaceBodyText1,
+                        label: Text('Body Text Scale', style: Theme.of(context).textTheme.bodySmall),
+                        textStyle: Theme.of(context).textTheme.bodySmall,
+                        onSelected: (value) => setState(() {
+                              mockupSettingsDataObject = mockupSettingsDataObject.copyWith(typefaceBodyText1: value);
+                            }),
+                        dropdownMenuEntries: TypefaceType.values
+                            .map((e) => DropdownMenuEntry(
+                                  value: e,
+                                  label: e.toString(),
+                                ))
+                            .toList()),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(context.fluid.spaces.s),
+                    child: DropdownMenu(
+                        initialSelection: mockupSettingsDataObject.typefaceBodyText2,
+                        label: Text('Body Text Scale', style: Theme.of(context).textTheme.bodySmall),
+                        textStyle: Theme.of(context).textTheme.bodySmall,
+                        onSelected: (value) => setState(() {
+                              mockupSettingsDataObject = mockupSettingsDataObject.copyWith(typefaceBodyText2: value);
+                            }),
+                        dropdownMenuEntries: TypefaceType.values
+                            .map((e) => DropdownMenuEntry(
+                                  value: e,
+                                  label: e.toString(),
+                                ))
+                            .toList()),
+                  ),
+                ],
+              ),
             ExpansionTile(
               title: const Text("Font types"),
               leading: const Icon(Icons.font_download), //add icon
