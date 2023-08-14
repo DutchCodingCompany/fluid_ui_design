@@ -1,7 +1,7 @@
 class TypeConfig {
   const TypeConfig({
-    this.minBaseFontSize = 17,
-    this.maxBaseFontSize = 20,
+    this.minBaseFontSize = 10,
+    this.maxBaseFontSize = 14,
     this.minTypeScaleModifier = 1.2,
     this.maxTypeScaleModifier = 1.333,
   });
