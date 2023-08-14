@@ -59,6 +59,7 @@ class FluidConfig extends ThemeExtension<FluidConfig> {
   }
 
   FluidSpaces get spaces => FluidSpaces(this);
+  FluidSpaceHelper get space => FluidSpaceHelper(this);
 
   double size({required double min, required double max}) => FluidSize(fluidConfig: this, min: min, max: max).value;
 
