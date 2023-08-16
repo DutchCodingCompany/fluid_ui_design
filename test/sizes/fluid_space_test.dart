@@ -30,19 +30,29 @@ void main() {
 
         FluidConfig config;
 
-        config = FluidConfig(verySmallScreenSize);
+        config = FluidConfig(verySmallScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(FluidSpace(fluidConfig: config, spaceModifier: spaceModifier).value.round(), minimalSize);
 
-        config = FluidConfig(minimalScreenSize);
+        config = FluidConfig(minimalScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(FluidSpace(fluidConfig: config, spaceModifier: spaceModifier).value.round(), minimalSize);
 
-        config = FluidConfig(halfScreenSize);
+        config = FluidConfig(halfScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(FluidSpace(fluidConfig: config, spaceModifier: spaceModifier).value.round(), halfSize);
 
-        config = FluidConfig(maximalScreenSize);
+        config = FluidConfig(maximalScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(FluidSpace(fluidConfig: config, spaceModifier: spaceModifier).value.round(), maximalSize);
 
-        config = FluidConfig(veryLargeScreenSize);
+        config = FluidConfig(veryLargeScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(FluidSpace(fluidConfig: config, spaceModifier: spaceModifier).value.round(), maximalSize);
       }),
     );
