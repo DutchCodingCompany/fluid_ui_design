@@ -39,22 +39,32 @@ void main() {
         double veryLargeScreenSize = 2000;
 
         FluidConfig config;
-        config = FluidConfig(verySmallScreenSize);
+        config = FluidConfig(verySmallScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(
             double.parse(FluidType(fluidConfig: config, scaleStep: scaleStep).value.toStringAsFixed(2)), minimalSize);
 
-        config = FluidConfig(minimalScreenSize);
+        config = FluidConfig(minimalScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(
             double.parse(FluidType(fluidConfig: config, scaleStep: scaleStep).value.toStringAsFixed(2)), minimalSize);
 
-        config = FluidConfig(halfScreenSize);
+        config = FluidConfig(halfScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(double.parse(FluidType(fluidConfig: config, scaleStep: scaleStep).value.toStringAsFixed(2)), halfSize);
 
-        config = FluidConfig(maximalScreenSize);
+        config = FluidConfig(maximalScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(
             double.parse(FluidType(fluidConfig: config, scaleStep: scaleStep).value.toStringAsFixed(2)), maximalSize);
 
-        config = FluidConfig(veryLargeScreenSize);
+        config = FluidConfig(veryLargeScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(
             double.parse(FluidType(fluidConfig: config, scaleStep: scaleStep).value.toStringAsFixed(2)), maximalSize);
       }),

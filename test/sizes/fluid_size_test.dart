@@ -1,6 +1,4 @@
-import 'package:fluid_ui_design/src/core/fluid_size.dart';
-import 'package:fluid_ui_design/src/core/theme/fluid_config_theme_extension.dart';
-import 'package:fluid_ui_design/src/core/viewport_config.dart';
+import 'package:fluid_ui_design/fluid_ui_design.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:parameterized_test/parameterized_test.dart';
 
@@ -16,7 +14,9 @@ void main() {
         [2000.0, 200.0]
       ],
       p2((double screenSize, double expectedSize) {
-        FluidConfig config = FluidConfig(screenSize);
+        FluidConfig config = FluidConfig(screenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         FluidSize size = FluidSize(fluidConfig: config, min: 100, max: 200);
 
         expect(size.value, expectedSize);
@@ -33,7 +33,9 @@ void main() {
         [2000.0, 100.0]
       ],
       p2((double screenSize, double expectedSize) {
-        FluidConfig config = FluidConfig(screenSize);
+        FluidConfig config = FluidConfig(screenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         FluidSize size = FluidSize(fluidConfig: config, min: 200, max: 100);
 
         expect(size.value, expectedSize);
@@ -52,8 +54,10 @@ void main() {
         [2000.0, 200.0]
       ],
       p2((double screenSize, double expectedSize) {
-        FluidConfig config =
-            FluidConfig(screenSize, viewportConfig: const ViewportConfig(minViewportSize: 200, maxViewportSize: 1000));
+        FluidConfig config = FluidConfig(screenSize,
+            viewportConfig: const ViewportConfig(minViewportSize: 200, maxViewportSize: 1000),
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         FluidSize size = FluidSize(fluidConfig: config, min: 100, max: 200);
         expect(size.value, expectedSize);
       }),

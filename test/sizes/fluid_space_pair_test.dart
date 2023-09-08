@@ -29,7 +29,9 @@ void main() {
         double verySmallScreenSize = 20;
         double veryLargeScreenSize = 2000;
 
-        FluidConfig config = FluidConfig(verySmallScreenSize);
+        FluidConfig config = FluidConfig(verySmallScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(
             FluidSpacePair(
                     fluidConfig: config,
@@ -39,7 +41,9 @@ void main() {
                 .round(),
             minimalSize);
 
-        config = FluidConfig(minimalScreenSize);
+        config = FluidConfig(minimalScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(
             FluidSpacePair(
                     fluidConfig: config,
@@ -49,7 +53,9 @@ void main() {
                 .round(),
             minimalSize);
 
-        config = FluidConfig(halfScreenSize);
+        config = FluidConfig(halfScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(
             FluidSpacePair(
                     fluidConfig: config,
@@ -59,7 +65,9 @@ void main() {
                 .round(),
             halfSize);
 
-        config = FluidConfig(maximalScreenSize);
+        config = FluidConfig(maximalScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(
             FluidSpacePair(
                     fluidConfig: config,
@@ -69,7 +77,9 @@ void main() {
                 .round(),
             maximalSize);
 
-        config = FluidConfig(veryLargeScreenSize);
+        config = FluidConfig(veryLargeScreenSize,
+            typeConfig: const TypeConfig(minBaseFontSize: 17, maxBaseFontSize: 20),
+            spaceConfig: const SpaceConfig(baseMin: 17, baseMax: 20));
         expect(
             FluidSpacePair(
                     fluidConfig: config,
