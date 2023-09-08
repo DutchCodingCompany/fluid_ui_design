@@ -2,7 +2,7 @@ name: fluid_ui_design
 description: A framework for building Fluid Responsive UIs in Flutter.
 homepage: https://github.com/DutchCodingCompany/fluid_ui_design
 
-version: 0.0.1-beta.1
+version: 0.0.2-beta.1
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
