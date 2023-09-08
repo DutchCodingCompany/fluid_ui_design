@@ -1,4 +1,4 @@
-# Fluid UI Design [BETA 🪄]
+# Fluid UI Design
 
 Fluid UI Design is a package that helps implement a Fluid Design based on the Utopia principle (https://utopia.fyi). Instead of using breakpoints to create a responsive design, Fluid UI Design calculates sizing values based on the scale defined before and the ratio of the screen size.
 Before using this package, it is adviced to read the article on Utopia (https://utopia.fyi) to better understand the principles behind this design phylosophy.
